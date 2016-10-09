@@ -4,7 +4,7 @@ var validator = require("email-validator");
 
 var nodemailer = require('nodemailer');
 
-// create reusable transporter object using the default SMTP transport
+
 var transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	auth: {
@@ -32,14 +32,13 @@ router.post('/sendMail', function(req, res, next) {
 	}
 
 
+
+
 	var mailOptions = {
 	    from: req.body.email,
 	    to: '"Message" <webtechcsystemsompany@gmail.com>', 
 	    subject: req.body.subject, 
-text: 'Name: '+req.body.name+`
-` + 'Email: '+req.body.email+`
-` + 'Subject: '+req.body.subject+`
-` + 'Message: '+req.body.msg 
+		text: 'Name: '+req.body.name+' // '+ 'Email: '+req.body.email+' // '+  'Subject: '+req.body.subject+' // '+ 'Message: '+req.body.msg 
 	};
 
 
@@ -48,9 +47,10 @@ text: 'Name: '+req.body.name+`
 	        console.log(error);
 	    }
 
-	    console.log('Message sent: ' + info.response);
+	    console.log('Message sent: ');
 	    res.end();
 	});
 });
 
 module.exports = router;
+
